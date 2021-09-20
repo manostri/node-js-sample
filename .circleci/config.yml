@@ -21,6 +21,7 @@ jobs:
       image: ubuntu-2004:202107-02
 
     steps:
+      - checkout
       - deploy:
           name: Deploy application Docker image
           command: |

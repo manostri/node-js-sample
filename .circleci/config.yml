@@ -7,7 +7,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: docker/node-docker
+      - image: CircleCI/node-docker
         auth:
           username: manostri
           password: $DOCKERHUB_PASSWORD

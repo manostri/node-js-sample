@@ -26,7 +26,7 @@ jobs:
           name: Deploy application Docker image
           command: |
            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-           docker build . -t $DOCKER_LOGIN/node_app
+           docker build --tag $DOCKER_LOGIN/node_app .
            docker push $DOCKERHUB_LOGIN/node_app
 
 workflows:

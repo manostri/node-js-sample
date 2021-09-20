@@ -16,9 +16,22 @@ jobs:
            sleep 2
            curl -I localhost:8080 | grep "200 OK"
 
+  publish:
+    machine:
+      image: ubuntu-2004:202107-02
+
+    steps:
       - deploy:
           name: Deploy application Docker image
           command: |
            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
            docker tag node_app $DOCKERHUB_LOGIN/node_app
            docker push $DOCKERHUB_LOGIN/node_app
+
+workflows:
+  executor:
+    jobs:
+      - build
+      - publish:
+          requires:
+            - build

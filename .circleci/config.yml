@@ -12,8 +12,8 @@ jobs:
       - run:
           name: Build application Docker image
           command: |
-           docker build . -t node_app
-           docker run -p 8080:8080 -d node-app
+           docker build . -t $DOCKERHUB_LOGIN/node_app
+           docker run -p 8080:8080 -d $DOCKERHUB_LOGIN/node-app
            sleep 2
            curl -I localhost:8080 | grep "200 OK"
 
@@ -21,5 +21,5 @@ jobs:
           name: Deploy application Docker image
           command: |
            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-           docker tag node_app manostri/node_app
-           docker push manostri/node_app
+           docker tag node_app $DOCKERHUB_LOGIN/node_app
+           docker push $DOCKERHUB_LOGIN/node_app

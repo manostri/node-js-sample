@@ -12,7 +12,7 @@ jobs:
           name: Build application Docker image
           command: |
            docker build . -t node_app
-           docker run -p 8080:8080 -d node-app
+           docker run -p 8080:8080 -d node_app
            sleep 2
            curl -I localhost:8080 | grep "200 OK"
 
